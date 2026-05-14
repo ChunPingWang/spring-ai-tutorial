@@ -62,7 +62,10 @@ public class CucumberSpringConfig {
         @Bean
         @ServiceConnection
         PostgreSQLContainer<?> postgresContainer() {
-            return new PostgreSQLContainer<>(DockerImageName.parse("postgres:16-alpine"));
+            // pgvector image is a postgres base + the `vector` extension binaries.
+            // Required by Flyway V2 / Spring AI PgVectorStore in S3.
+            return new PostgreSQLContainer<>(
+                    DockerImageName.parse("pgvector/pgvector:pg16").asCompatibleSubstituteFor("postgres"));
         }
     }
 }

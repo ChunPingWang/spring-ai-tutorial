@@ -20,6 +20,11 @@
             <artifactId>conversation-adapter</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.tutorial.springai</groupId>
+            <artifactId>knowledge-retrieval-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

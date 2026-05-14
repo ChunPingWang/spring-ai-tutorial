@@ -20,11 +20,24 @@ spring:
       chat:
         options:
           model: ${SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL:gpt-4o-mini}
+      embedding:
+        options:
+          model: ${SPRING_AI_OPENAI_EMBEDDING_OPTIONS_MODEL:text-embedding-3-small}
+    vectorstore:
+      pgvector:
+        initialize-schema: false
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
 
 app:
   conversation:
     token-budget: 8000
     min-turns-to-keep: 2
+  knowledge:
+    chunk:
+      max-chars: 1000
+      overlap: 200
 
 server:
   port: 8080

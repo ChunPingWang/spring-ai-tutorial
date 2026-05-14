@@ -22,6 +22,9 @@
         <module>conversation-domain</module>
         <module>conversation-application</module>
         <module>conversation-adapter</module>
+        <module>knowledge-retrieval-domain</module>
+        <module>knowledge-retrieval-application</module>
+        <module>knowledge-retrieval-adapter</module>
         <module>bootstrap</module>
         <module>architecture-tests</module>
     </modules>
