@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: spring-ai-tutorial
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spring_ai_tutorial}
+    username: ${SPRING_DATASOURCE_USERNAME:tutorial}
+    password: ${SPRING_DATASOURCE_PASSWORD:tutorial}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate.format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        options:
+          model: ${SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL:gpt-4o-mini}
+
+app:
+  conversation:
+    token-budget: 8000
+    min-turns-to-keep: 2
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.tutorial.springai: DEBUG
